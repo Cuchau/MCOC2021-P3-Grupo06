@@ -21,9 +21,9 @@ vel13 = 120
 vel14 = 60
 vel15 = 60
 
-largo1 = sqrt((1- 4)**2 + (0 - 0)**2)
-largo2 = sqrt((1- 1)**2 + (0 - 6)**2)
-largo3 =  sqrt((1- 4)**2 + (0 - 3)**2)
+largo1 = sqrt((1- 4)**2 + (2 - 0)**2)
+largo2 = sqrt((1- 1)**2 + (2 - 6)**2)
+largo3 =  sqrt((1- 4)**2 + (2 - 3)**2)
 largo4 =  sqrt((4- 1)**2 + (3 - 6)**2)
 largo5 =  sqrt((4- 5)**2 + (3 - 8)**2)
 largo6 =  sqrt((4- 3)**2 + (7 - 3)**2)
@@ -54,7 +54,7 @@ tiempo14 = largo14/vel14
 tiempo15 = largo15/vel15
 
 #Agregando nodos(nodes) 
-G.add_node("0", pos=[1,0])
+G.add_node("0", pos=[1,2])
 G.add_node("1", pos=[4,3])
 G.add_node("2", pos=[1,6])
 G.add_node("3", pos=[7,3])
@@ -101,12 +101,14 @@ plt.xticks([0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0],["0","1.0","2.0","3.0","
 plt.yticks([0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0],["0","1.0","2.0","3.0","4.0","5.0","6.0","7.0","8.0","9.0","10"])
 plt.xlabel("X (Km)")
 plt.ylabel("Y (Km)")
+#plt.savefig("fig1.png")
 plt.show()  
 
 #mejor ruta------------------------------------------------------------------------
 path1 = dijkstra_path(G, "0", "9", weight="tiempo")
 path2 = dijkstra_path(G, "4", "5", weight="tiempo")
 path3 = dijkstra_path(G, "0", "4", weight="tiempo")
+
 
 edgelist1=[]
 colores1=[]
@@ -143,6 +145,63 @@ for ni,nf in G.edges:
         colores3.append("g")
         ancho3.append(1)
     edgelist3.append((ni,nf))
+    
+def funcion_costo(ni, nf, atributos_arco):
+    # print(f"ni = {ni} nf = {nf}, att={atributos_arco}")
+    return atributos_arco["tiempo"]
+################################
+#FIGURA 2 
+rutaf2 = dijkstra_path(G, "0", "9", weight=funcion_costo)
+
+tiempo_rutaf2 = 0.
+Nparadas = len(rutaf2)
+
+print(f"Ruta Nparadas={Nparadas} ruta: {rutaf2}")
+for i in range(Nparadas-1):
+    parada_i = rutaf2[i]
+    parada_f = rutaf2[i+1]
+    tiempo_tramo_i = G.edges[parada_i, parada_f]["tiempo"]
+    print(f"Tramo {i}  {parada_i} a {parada_f} costo={tiempo_tramo_i}")
+    tiempo_rutaf2 += tiempo_tramo_i
+
+    print(f"tiempo de ruta = {tiempo_rutaf2}")
+    
+#FIGURA 3
+rutaf3 = dijkstra_path(G, "4", "5", weight=funcion_costo)
+
+tiempo_rutaf3 = 0.
+Nparadas = len(rutaf3)
+
+print(f"Ruta Nparadas={Nparadas} ruta: {rutaf3}")
+for i in range(Nparadas-1):
+    parada_i = rutaf3[i]
+    parada_f = rutaf3[i+1]
+    tiempo_tramo_i = G.edges[parada_i, parada_f]["tiempo"]
+    print(f"Tramo {i}  {parada_i} a {parada_f} costo={tiempo_tramo_i}")
+    tiempo_rutaf3 += tiempo_tramo_i
+
+    print(f"tiempo de ruta = {tiempo_rutaf3}")
+#FIGURA 4
+rutaf4 = dijkstra_path(G, "0", "4", weight=funcion_costo)
+
+tiempo_rutaf4 = 0.
+Nparadas = len(rutaf4)
+
+print(f"Ruta Nparadas={Nparadas} ruta: {rutaf4}")
+for i in range(Nparadas-1):
+    parada_i = rutaf4[i]
+    parada_f = rutaf4[i+1]
+    tiempo_tramo_i = G.edges[parada_i, parada_f]["tiempo"]
+    print(f"Tramo {i}  {parada_i} a {parada_f} costo={tiempo_tramo_i}")
+    tiempo_rutaf4 += tiempo_tramo_i
+
+    print(f"tiempo de ruta = {tiempo_rutaf4}")
+    
+tiempo_rutaf2t="{0:.5}".format(tiempo_rutaf2)
+tiempo_rutaf3t="{0:.5}".format(tiempo_rutaf3)
+tiempo_rutaf4t="{0:.5}".format(tiempo_rutaf4)
+    
+##################################
 
 plt.figure(2)
 ax=plt.subplot()
@@ -150,22 +209,23 @@ nx.draw_networkx_nodes(G, pos=pos)
 nx.draw_networkx_labels(G, pos=pos)
 nx.draw_networkx_edges(G, pos, edgelist=edgelist1, edge_color=colores1,width=ancho1,ax=ax)
 #nx.draw_networkx_edge_labels(G, pos, edge_labels= labels)
-plt.suptitle(f"andate por apth1")
+plt.suptitle(f"tiempo viaje para el par: O=0, D=9 = {tiempo_rutaf2t} hr")
 plt.grid()
 ax.tick_params( left=True, bottom=True, labelleft=True, labelbottom=True)
 plt.xticks([0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0],["0","1.0","2.0","3.0","4.0","5.0","6.0","7.0","8.0","9.0","10"])
 plt.yticks([0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0],["0","1.0","2.0","3.0","4.0","5.0","6.0","7.0","8.0","9.0","10"])
 plt.xlabel("X (Km)")
 plt.ylabel("Y (Km)")
-plt.show()  
+#plt.savefig("fig2.png")
+plt.show()
 
 plt.figure(3)
 ax=plt.subplot()
 nx.draw_networkx_nodes(G, pos=pos)
 nx.draw_networkx_labels(G, pos=pos)
 nx.draw_networkx_edges(G, pos, edgelist=edgelist2, edge_color=colores2,width=ancho2,ax=ax)
+plt.suptitle(f"tiempo viaje para el par O=4, D=5 = {tiempo_rutaf3t} hr")
 #nx.draw_networkx_edge_labels(G, pos, edge_labels= labels)
-plt.suptitle(f"andate por path2")
 plt.grid()
 ax.tick_params( left=True, bottom=True, labelleft=True, labelbottom=True)
 plt.xticks([0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0],["0","1.0","2.0","3.0","4.0","5.0","6.0","7.0","8.0","9.0","10"])
@@ -173,6 +233,7 @@ plt.yticks([0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0],["0","1.0","2.0","3.0","
 
 plt.xlabel("X (Km)")
 plt.ylabel("Y (Km)")
+#plt.savefig("fig3.png")
 plt.show()  
 
 plt.figure(4)
@@ -180,8 +241,8 @@ ax=plt.subplot()
 nx.draw_networkx_nodes(G, pos=pos)
 nx.draw_networkx_labels(G, pos=pos)
 nx.draw_networkx_edges(G, pos, edgelist=edgelist3, edge_color=colores3,width=ancho3,ax=ax)
+plt.suptitle(f"tiempo viaje para el par O=0, D=4 = {tiempo_rutaf4t} hr")
 #nx.draw_networkx_edge_labels(G, pos, edge_labels= labels)
-plt.suptitle(f"andate por path3")
 plt.grid()
 ax.tick_params( left=True, bottom=True, labelleft=True, labelbottom=True)
 plt.xticks([0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0],["0","1.0","2.0","3.0","4.0","5.0","6.0","7.0","8.0","9.0","10"])
@@ -189,6 +250,7 @@ plt.yticks([0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0],["0","1.0","2.0","3.0","
 
 plt.xlabel("X (Km)")
 plt.ylabel("Y (Km)")
+#plt.savefig("fig4.png")
 plt.show()  
 
 
