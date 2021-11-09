@@ -4,6 +4,7 @@ Integrantes:
 * Ignacio Inostroza
 
 #Entrega 2
+
 ![fig1](https://user-images.githubusercontent.com/88348645/141021573-eaebf19c-6829-46f1-ad93-bb768c75869c.png)
 
 ![fig2](https://user-images.githubusercontent.com/88348645/141021589-a7983a79-503e-480c-a6ce-d3f9b09d5653.png)
