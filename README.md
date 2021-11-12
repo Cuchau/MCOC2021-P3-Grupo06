@@ -17,4 +17,5 @@ Integrantes:
 
 *Zona Bruno Riquelme
 
-![zona_bruno_riquelme](https://user-images.githubusercontent.com/88348645/141486936-b4615fe5-88a3-41d4-aa59-773a982a62bd.png)
+![zona_bruno_riquelme](https://user-images.githubusercontent.com/88348645/141487246-eb9f5b5c-37bb-4153-a3e7-9b0a291e6e6c.png)
+
