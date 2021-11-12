@@ -12,3 +12,9 @@ Integrantes:
 ![fig3](https://user-images.githubusercontent.com/88348645/141021594-a217c8f5-5baf-4d30-bd3d-864848e981d2.png)
 
 ![fig4](https://user-images.githubusercontent.com/88348645/141021595-b1eaa47f-c78b-4797-81ec-730e153eada7.png)
+
+#Entrega 3
+
+*Zona Bruno Riquelme
+
+![zona_bruno_riquelme](https://user-images.githubusercontent.com/88348645/141486936-b4615fe5-88a3-41d4-aa59-773a982a62bd.png)
