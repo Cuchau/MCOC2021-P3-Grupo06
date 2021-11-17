@@ -19,3 +19,16 @@ Integrantes:
 
 ![zona_bruno_riquelme](https://user-images.githubusercontent.com/88348645/141487246-eb9f5b5c-37bb-4153-a3e7-9b0a291e6e6c.png)
 
+#Entrega 4
+
+incrementos = [0.1]*9 + [0.01]*9 + [0.001]*9 + [0.0001]*10
+            for i in range(Nparadas-1):
+                o = path[i]
+                d = path[i+1]
+                for i, incremento in enumerate(incrementos):
+                    G.edges[o,d]["flujo"] += incremento
+            print(f"demanda {demanda_actual} , {path} ")
+            OD[key] -=1
+            
+Con esta función se aumenta el flujo y se disminuye la demanda hasta que es 0, esto es para que el ciclo pare cuando ya no hay demanda en la ruta respectiva, aunque igual hay diferencias con la entrega, esto puede deberse a que el decremento de la funcion no es correcta.
+
