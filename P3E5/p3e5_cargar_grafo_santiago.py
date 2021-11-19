@@ -32,42 +32,45 @@ calles_clipp=zonas_seleccionadas.clip(zonas_seleccionadas["geometry"])
 
 centroid_seleccionados = zonas_seleccionadas.centroid
 #poner nombre de las zonas arriba de los centroides
-for idx, row in zonas_seleccionadas.iterrows():
+#for idx, row in zonas_seleccionadas.iterrows():
     #print(f"idx = {idx}")
     #print("ID = ",row["ID"])
     #print("comuna = ",row["Comuna"])
     #break
-    c = row.geometry.centroid
-    ax.annotate(text=row["ID"], xy=(c.x,c.y), horizontalalignment="center" )
+    #c = row.geometry.centroid
+    #ax.annotate(text=row["ID"], xy=(c.x,c.y), horizontalalignment="center" )
 
 
 motorway = gdf_edges[gdf_edges.highway=="motorway"]
 primary = gdf_edges[gdf_edges.highway=="primary"]
 secondary = gdf_edges[gdf_edges.highway=="secondary"]
 tertiary = gdf_edges[gdf_edges.highway=="tertiary"]
+AVO = gdf_edges[(gdf_edges.highway=="construction") & (gdf_edges.name=="Autopista Vespucio Oriente")]
+#AVO = gdf_edges[(gdf_edges.highway=="construction") & (gdf_edges.highway=="motorway")]
 
-#Estas tres serian Parte de AVO
-AVO1 = gdf_edges[gdf_edges.name=="Avenida Ossa"]
-AVO2 = gdf_edges[gdf_edges.name=="Avenida Américo Vespucio Norte"]
-AVO3 = gdf_edges[gdf_edges.name=="Avenida Américo Vespucio Sur"]
-
-#cortar Grafo
+#cortar calles
 motorway1 = gps.clip(motorway,calles_clipp.geometry)
 secondary1 = gps.clip(secondary,calles_clipp.geometry)
 tertiary1 = gps.clip(tertiary,calles_clipp.geometry)
 primary1 = gps.clip(primary,calles_clipp.geometry)
-AVO1_1 = gps.clip(AVO1,calles_clipp.geometry)
-AVO2_1 = gps.clip(AVO2,calles_clipp.geometry)
-AVO3_1 = gps.clip(AVO3,calles_clipp.geometry)
+AVO1 = gps.clip(AVO,calles_clipp.geometry)
 
-#Plotear
-motorway1 .plot(ax=ax, color="orange")
-secondary1.plot(ax=ax, color="yellow")
-tertiary1 .plot(ax=ax, color="green")
-primary1  .plot(ax=ax, color="blue")
-AVO1_1.plot(ax=ax,color = "red")
-AVO2_1.plot(ax=ax,color = "red")
-AVO3_1.plot(ax=ax,color = "red")
+#Plotear con grafo cortado
+#motorway1 .plot(ax=ax, color="orange")
+#secondary1.plot(ax=ax, color="yellow")
+#tertiary1 .plot(ax=ax, color="green")
+#primary1 .plot(ax=ax, color="blue")
+#AVO1    .plot(ax=ax, color="red")
+
+#Plotear todo el mapa
+motorway .plot(ax=ax, color="orange")
+secondary.plot(ax=ax, color="yellow")
+tertiary .plot(ax=ax, color="green")
+primary .plot(ax=ax, color="blue")
+AVO     .plot(ax=ax, color="red")
+
+#zonas_gdf.plot(ax=ax, color = None)
 zonas_seleccionadas.plot(ax=ax, color= "#9D9D9D")
+
 
 plt.show() 

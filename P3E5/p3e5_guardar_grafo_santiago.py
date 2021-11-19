@@ -13,7 +13,7 @@ G = ox.graph_from_bbox(
     west = -70.80 ,
     network_type="drive",
     clean_periphery=True,
-    custom_filter='["highway"~"motorway|primary|secondary|tertiary"]'
+    custom_filter='["highway"~"motorway|primary|secondary|tertiary|construction"]'
     )
 
 nx.write_gpickle(G, "santiago_grueso.gpickle")
