@@ -32,3 +32,13 @@ incrementos = [0.1]*9 + [0.01]*9 + [0.001]*9 + [0.0001]*10
             
 Con esta función se aumenta el flujo y se disminuye la demanda hasta que es 0, esto es para que el ciclo pare cuando ya no hay demanda en la ruta respectiva, aunque igual hay diferencias con la entrega, esto puede deberse a que el decremento de la funcion no es correcta.
 
+#Entrega 5
+
+Con la siguiente imagen se entiende lo de :No muestre otras calles y corte todas las calles para que solo estén en las zonas seleccionadas.
+
+![calles_zonas](https://user-images.githubusercontent.com/88348645/142656589-49fc5f95-a305-4937-b2ba-1509ccc8d901.png)
+
+igual dejo una imagen donde se aprecian todos las calles por si acaso
+
+![zona_completa](https://user-images.githubusercontent.com/88348645/142656786-b42217b3-69f7-4f4e-9aef-841daf5e5424.png)
+
