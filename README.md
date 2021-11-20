@@ -42,3 +42,11 @@ igual dejo una imagen donde se aprecian todos las calles por si acaso
 
 ![zona_completa](https://user-images.githubusercontent.com/88348645/142656786-b42217b3-69f7-4f4e-9aef-841daf5e5424.png)
 
+Los criterios para la selección de las zonas fue considerar aquellas zonas más cercanas a la autopista AVO, ya que es más probable que estas zonas utilicen este arco en los viajes que estas realizan. Otro criterio fue el considerar que la existencia de un mall en la zona 306, esto genera un aumento de actividades en la zona, lo que genera una atracción de viajes, por lo tanto habrá un mayor flujo y una mayor probabilidad de que AVO sea utilizada para realizar dichos viajes.
+¿Cuántas zonas quedaron seleccionadas?
+35 zonas fueron seleccionadas
+¿Cuántos viajes deberá asignar?
+
+¿Cuáles son los pares OD que espera que generen un mayor flujo en AVO?
+Los pares OD que se espera que generen un mayor flujo en AVO son los pares OD entre zonas más lejanas, ya que es más probable utilizar una autopista en tramos más largo que en tramos más cortos.
+
